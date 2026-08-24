@@ -1,0 +1,34 @@
+{
+  "name": "filestation-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "LAN file exchange: host a local site where any browser on the network can send and receive files.",
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n srv,web -c blue,magenta \"npm run dev -w filestation\" \"npm run dev -w @filestation/web\"",
+    "start": "node packages/server/dist/index.js",
+    "build": "npm run build -w filestation && npm run build -w @filestation/web",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "eslint": "^9.16.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.13.0",
+    "prettier": "^3.4.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.17.0",
+    "vitest": "^4.1.11"
+  }
+}
