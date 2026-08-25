@@ -1,28 +1,30 @@
-# FileStation
+<a href="https://npmjs.org/package/filestation"><img src="https://img.shields.io/npm/v/filestation.svg" /></a>
+<a href="https://npmjs.org/package/filestation"><img src="https://img.shields.io/npm/dy/filestation" /></a>
+<a href="https://github.com/recleun/filestation/actions"><img src="https://img.shields.io/github/actions/workflow/status/recleun/filestation/ci.yml" /></a>
 
-A self-hosted file exchange for your local network. Run it on one machine and it
+> [!NOTE]
+> This project was made with the help of AI. Different parts were planned and written
+> using AI, and the outcome was reviewed to the best of my abilities. :)
+
+FileStation is a self-hosted file exchange for your local network. Run it on one machine and it
 hosts a small website; any browser on the same network (phone, tablet, laptop)
 can open the link (or scan the QR code) and instantly send or receive files. No
 accounts, no cloud, no uploads leaving the room.
 
-## Quickstart
+## Install
 
 Requires Node.js 20+.
 
 ```sh
-# development (server + Vite dev server with hot reload)
-npm install
-npm run dev
-
-# production
-npm run build
-npm start
+npm install filestation # or use it straight away: npx filestation
+filestation
 ```
 
-Then open the printed URL from any device in the same network. The startup banner
-shows a QR code you can scan straight from the host machine's terminal.
+The startup banner prints the local URL plus a QR code you can scan straight
+from the host machine's terminal. Open it on any device in the same network
+and start sending files.
 
-## CLI options
+### CLI options
 
 ```
 filestation [--port <port>] [--dir <directory>] [-h | --help]
@@ -31,6 +33,22 @@ filestation [--port <port>] [--dir <directory>] [-h | --help]
 --dir    Storage directory (default: ~/.filestation/uploads)
 -h       Show help
 ```
+## Run from source
+
+```sh
+git clone https://github.com/recleun/filestation
+cd filestation
+npm install
+
+# development (server + Vite dev server with hot reload)
+npm run dev
+
+# production
+npm run build
+npm start
+```
+
+Then open the printed URL from any device in the same network.
 
 ## How it works
 
@@ -83,8 +101,9 @@ The repo is an npm-workspaces monorepo:
 - `packages/server` — Fastify server, storage, SSE hub (published to npm as `filestation`)
 - `packages/web` — React + Vite frontend served statically in production
 
-## Limitations / future work
+## Limitations
 
 - No resumable or chunked uploads; a dropped connection restarts a transfer.
 - No authentication, TLS, or access control.
 - One storage directory per instance; no multi-inbox support.
+
