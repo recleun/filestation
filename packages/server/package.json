@@ -1,6 +1,6 @@
 {
   "name": "filestation",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "LAN file exchange server: host a local site where any browser can send and receive files.",
   "license": "MIT",
   "author": {
