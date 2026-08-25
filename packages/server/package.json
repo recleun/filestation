@@ -35,6 +35,8 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc -p tsconfig.build.json",
+    "prepack": "cp ../../README.md ./README.md",
+    "postpack": "rm -f ./README.md",
     "typecheck": "tsc -p tsconfig.json",
     "test": "vitest run"
   },
